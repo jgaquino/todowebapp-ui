@@ -1,0 +1,42 @@
+main.Main {
+  section {
+    margin: 45px 0 50px;
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      img {
+        cursor: pointer;
+        padding: 5px;
+      }
+    }
+  }
+}
+
+footer.Footer {
+  p {
+    font-size: 14px;
+    color: rgba(31, 42, 75, 0.59);
+
+    strong {
+      font-weight: 600;
+      margin-right: 17px;
+    }
+
+    span {
+      font-weight: 400;
+      color: #4a77e5;
+      text-decoration: underline;
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
