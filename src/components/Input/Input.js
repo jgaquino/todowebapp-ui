@@ -14,8 +14,8 @@ const Input = ({ placeholder, onEnterNewData }) => {
     };
 
     inputRef.current.addEventListener("keypress", callback);
-    return () => inputRef.current.removeEventListener("keypress", callback);
-  }, [content]);
+    return () => inputRef.current?.removeEventListener("keypress", callback);
+  }, [content, onEnterNewData]);
 
   return (
     <input

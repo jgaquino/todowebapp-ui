@@ -1,4 +1,3 @@
-import React, { useCallback, useState } from "react";
 import styles from "./TodoList.module.scss";
 import closeIcon from "../../assets/x.svg";
 import Container from "../../components/Container";
