@@ -1,3 +1,12 @@
+.logout {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 14px;
+  color: #1f2a4b;
+  cursor: pointer;
+}
+
 main.Main {
   section {
     margin: 45px 0 50px;
@@ -34,6 +43,14 @@ footer.Footer {
       color: #4a77e5;
       text-decoration: underline;
       margin-right: 10px;
+      cursor: pointer;
+
+      &.active {
+        color: #1f2a4b;
+        text-decoration: none;
+        cursor: auto;
+      }
+
       &:last-child {
         margin-right: 0;
       }
