@@ -25,7 +25,7 @@ const TodoList = () => {
         <main className={styles.Main}>
           <Input
             placeholder="Add a new todo"
-            onEnterNewData={(newTodo) => dispatch(CREATE_TODO(newTodo))}
+            onEnterNewData={async (title) => dispatch(await CREATE_TODO(title))}
           />
           <section>
             {state.todos
@@ -34,9 +34,12 @@ const TodoList = () => {
                 <div key={todo.id}>
                   <Checkbox
                     checked={todo.completed}
-                    onChange={(cheked) =>
+                    onChange={async (checked) =>
                       dispatch(
-                        MARK_TODO_COMPLETED_OR_UNCOMPLETED(cheked, todo.id)
+                        await MARK_TODO_COMPLETED_OR_UNCOMPLETED(
+                          checked,
+                          todo.id
+                        )
                       )
                     }
                     label={todo.title}
@@ -44,7 +47,7 @@ const TodoList = () => {
                   <img
                     alt="close icon"
                     src={closeIcon}
-                    onClick={() => dispatch(DELETE_TODO(todo.id))}
+                    onClick={async () => dispatch(await DELETE_TODO(todo.id))}
                   />
                 </div>
               ))}

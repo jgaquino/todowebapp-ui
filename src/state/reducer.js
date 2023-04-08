@@ -1,4 +1,5 @@
 import {
+  SET_TODOS_ACTION,
   CREATE_TODO_ACTION,
   DELETE_TODO_ACTION,
   MARK_TODO_COMPLETED_OR_UNCOMPLETED_ACTION,
@@ -8,6 +9,8 @@ const reducer = (state, action) => {
   let index, newTodos;
 
   switch (action.type) {
+    case SET_TODOS_ACTION:
+      return { ...state, todos: action.data };
     case CREATE_TODO_ACTION:
       return { ...state, todos: [...state.todos, action.data] };
     case DELETE_TODO_ACTION:
