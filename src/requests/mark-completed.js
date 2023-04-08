@@ -1,5 +1,5 @@
 import handleResponse from "./_handleResponse";
-const ENDPOINT = "http://localhost:3000/todos/mark-completed";
+const ENDPOINT = "http://localhost:4000/todos/mark-completed";
 
 const markCompleted = async (id) => {
   return await new Promise((resolve) => {

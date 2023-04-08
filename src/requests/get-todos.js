@@ -1,5 +1,5 @@
 import handleResponse from "./_handleResponse";
-const ENDPOINT = "http://localhost:3000/todos";
+const ENDPOINT = "http://localhost:4000/todos";
 
 const getTodos = async () => {
   return await new Promise((resolve) => {

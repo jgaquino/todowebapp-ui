@@ -3,14 +3,15 @@ const handleResponse = (resolve, visibleResponse) => {
     processRequest: async (res) => {
       const apiResponse = await res.json();
       if (visibleResponse) alert(visibleResponse);
-      console.log(
+      if (apiResponse.error) throw new Error(apiResponse.error);
+      console.info(
         `[${res.url}] handle response component output: `,
         apiResponse
       );
       return resolve(apiResponse);
     },
     processError: async (error) => {
-      console.log(
+      console.error(
         "handle response component output: ",
         error.message,
         error.status

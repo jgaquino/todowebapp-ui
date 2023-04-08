@@ -1,5 +1,5 @@
 import handleResponse from "./_handleResponse";
-const ENDPOINT = "http://localhost:3000/todos/delete";
+const ENDPOINT = "http://localhost:4000/todos/delete";
 
 const deleteTodo = async (id) => {
   return await new Promise((resolve) => {
