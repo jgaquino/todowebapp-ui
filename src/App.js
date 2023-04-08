@@ -1,18 +1,30 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./global.scss";
 import TodoList from "./pages/TodoList";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import State from "./state";
+import UserAuthentication from "./auth";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<TodoList />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      <UserAuthentication>
+        <Switch>
+          <Route exact path="/">
+            <State>
+              <TodoList />
+            </State>
+          </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+        </Switch>
+      </UserAuthentication>
     </BrowserRouter>
   );
 };

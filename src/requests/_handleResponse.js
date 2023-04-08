@@ -1,20 +1,20 @@
 const handleResponse = (resolve, visibleResponse) => {
   return {
     processRequest: async (res) => {
-      const apiResponse = await res.json();
+      if (res.status === 403) return;
       if (visibleResponse) alert(visibleResponse);
-      if (apiResponse.error) throw new Error(apiResponse.error);
+      if (res.data.error) throw new Error(res.data.error);
       console.info(
-        `[${res.url}] handle response component output: `,
-        apiResponse
+        `[${res.config.url}] handle response component output: `,
+        res
       );
-      return resolve(apiResponse);
+      return resolve(res.data);
     },
     processError: async (error) => {
       console.error(
         "handle response component output: ",
-        error.message,
-        error.status
+        error.response.data.error,
+        error.response.status
       );
       return resolve(false);
     },

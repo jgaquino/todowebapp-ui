@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Input.module.scss";
 
-const Input = ({ placeholder, onEnterNewData }) => {
+const Input = ({ placeholder, onEnterNewData, onChange, ...res }) => {
   const [content, setContent] = useState("");
   const inputRef = useRef(null);
 
@@ -9,13 +9,15 @@ const Input = ({ placeholder, onEnterNewData }) => {
     const callback = (e) => {
       if (!(e.key === "Enter")) return;
       if (content === "") return;
-      onEnterNewData(content);
+      onEnterNewData && onEnterNewData(content);
       setContent("");
     };
 
     inputRef.current.addEventListener("keypress", callback);
     return () => inputRef.current?.removeEventListener("keypress", callback);
   }, [content, onEnterNewData]);
+
+  useEffect(() => onChange && onChange(content), [content]);
 
   return (
     <input
@@ -24,6 +26,7 @@ const Input = ({ placeholder, onEnterNewData }) => {
       ref={inputRef}
       className={styles.Input}
       placeholder={placeholder}
+      {...res}
     />
   );
 };

@@ -11,19 +11,24 @@ import {
   MARK_TODO_COMPLETED_OR_UNCOMPLETED,
 } from "../../state/actions";
 import useFilter from "./useFilter";
+import useLogout from "../../auth/useLogout";
 
 const TodoList = () => {
+  const logout = useLogout();
   const [state, dispatch] = useAppState();
   const [filterTodoList, FilterComponent] = useFilter();
 
   return (
     <>
-      <p className={styles.logout}>Logout</p>
+      <p onClick={logout} className={styles.logout}>
+        Logout
+      </p>
       <Container width={440}>
         <Header title="Todo List" />
 
         <main className={styles.Main}>
           <Input
+            type="text"
             placeholder="Add a new todo"
             onEnterNewData={async (title) => dispatch(await CREATE_TODO(title))}
           />

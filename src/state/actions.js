@@ -14,11 +14,9 @@ export const MARK_TODO_COMPLETED_OR_UNCOMPLETED_ACTION =
   "MARK_TODO_COMPLETED_OR_UNCOMPLETED_ACTION";
 
 export const SET_TODOS = async () => {
-  const allTodos = await getTodos();
-  if (!allTodos) return;
   return {
     type: SET_TODOS_ACTION,
-    data: allTodos,
+    data: (await getTodos()) || [],
   };
 };
 export const CREATE_TODO = async (title) => {
