@@ -11,11 +11,17 @@ const handleResponse = (resolve, visibleResponse) => {
       return resolve(res.data);
     },
     processError: async (error) => {
-      console.error(
-        "handle response component output: ",
-        error.response.data.error,
-        error.response.status
-      );
+      if (error.response) {
+        console.error(
+          "handle response component output: ",
+          error.response.data.error,
+          error.response.status
+        );
+      }
+      if (error.message) {
+        console.error("handle response component output: ", error.message);
+      }
+
       return resolve(false);
     },
   };
