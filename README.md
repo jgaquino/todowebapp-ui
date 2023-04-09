@@ -22,8 +22,8 @@ Routes:
 
 ### Folder Structure
 
-`state`: React context that keep app state
-`requests`: Todo requests
-`pages`: Components that represents the pages
-`components`: Reusable components used on the pages
+`state`: React context that keep app state  
+`requests`: Todo requests  
+`pages`: Components that represents the pages  
+`components`: Reusable components used on the pages  
 `auth`: User authentication component
