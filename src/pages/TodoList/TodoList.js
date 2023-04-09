@@ -9,14 +9,25 @@ import {
   CREATE_TODO,
   DELETE_TODO,
   MARK_TODO_COMPLETED_OR_UNCOMPLETED,
+  SET_TODOS,
 } from "../../state/actions";
 import useFilter from "./useFilter";
 import useLogout from "../../auth/useLogout";
+import { useEffect, useRef } from "react";
 
 const TodoList = () => {
+  const shouldGetTodos = useRef(true);
   const logout = useLogout();
   const [state, dispatch] = useAppState();
   const [filterTodoList, FilterComponent] = useFilter();
+
+  useEffect(() => {
+    if (shouldGetTodos.current) {
+      shouldGetTodos.current = false;
+      const getTodos = async () => dispatch(await SET_TODOS());
+      getTodos();
+    }
+  }, []);
 
   return (
     <>

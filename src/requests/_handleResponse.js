@@ -6,7 +6,7 @@ const handleResponse = (resolve, visibleResponse) => {
       if (res.data.error) throw new Error(res.data.error);
       console.info(
         `[${res.config.url}] handle response component output: `,
-        res
+        res.data
       );
       return resolve(res.data);
     },

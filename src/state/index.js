@@ -1,17 +1,11 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import reducer from "./reducer";
-import { SET_TODOS } from "./actions";
 
 const AppContext = createContext(null);
 
 const State = ({ children }) => {
   const initialState = { todos: [] };
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  useEffect(() => {
-    const getTodos = async () => dispatch(await SET_TODOS());
-    getTodos();
-  }, []);
 
   return (
     <AppContext.Provider value={[state, dispatch]}>
